@@ -1,0 +1,16 @@
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+ 
+<span class="n">UDP_IP</span> <span class="o">=</span> <span class="s1">&#39;::1&#39;</span>
+<span class="n">UDP_PORT</span> <span class="o">=</span> <span class="mi">8883</span>
+ 
+<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET6</span><span class="p">,</span> <span class="c1"># Internet</span>
+                     <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span> <span class="c1"># UDP</span>
+<span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">UDP_IP</span><span class="p">,</span> <span class="n">UDP_PORT</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Serving at&#39;</span><span class="p">,</span> <span class="n">UDP_IP</span><span class="p">,</span> <span class="n">UDP_PORT</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># buffer size is 1024 bytes</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RCVD&#39;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="s1">&#39;from&#39;</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SENT&#39;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+</pre></div>
