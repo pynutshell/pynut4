@@ -5,7 +5,8 @@
 from pathlib import Path
 
 test_dir = Path(__file__).parent
-snippets = test_dir.parent.rglob("*.py")
+project_dir = test_dir.parent
+snippets = project_dir.rglob("*.py")
 
 # do they compile?
 total = 0
