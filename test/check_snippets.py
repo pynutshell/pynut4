@@ -4,6 +4,7 @@
 
 from pathlib import Path
 import sys
+print(f"Python version: {sys.version}\n")
 
 test_dir = Path(__file__).parent
 project_dir = test_dir.parent
