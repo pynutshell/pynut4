@@ -8,29 +8,29 @@ print(f"Python version: {sys.version}\n")
 
 test_dir = Path(__file__).parent
 project_dir = test_dir.parent
-snippets = project_dir.rglob("*.py")
+snippet_files = project_dir.rglob("*.py")
 
 # do they compile?
-total = 0
-fail_snips = []
-for snip in snippets:
-    log_snip = str(snip.relative_to(project_dir))
-    total += 1
+total_files = 0
+fail_snip_files = []
+for snip_file in snippet_files:
+    log_snip = str(snip_file.relative_to(project_dir))
+    total_files += 1
     try:
-        compile(snip.read_text(), str(snip), "exec")
+        compile(snip_file.read_text(), str(snip_file), "exec")
     except Exception as exc:
         print(f"Failed to compile {log_snip}")
         print(exc)
-        fail_snips.append((snip, str(exc)))
+        fail_snip_files.append((snip_file, str(exc)))
     else:
         print(f"Successfully compiled {log_snip}")
 
 print()
-if fail_snips:
-    print(f"{len(fail_snips)} of {total} files failed to compile:")
-    for snip, msg in fail_snips:
-        print(f"- {snip}\n    {msg}")
+if fail_snip_files:
+    print(f"{len(fail_snip_files)} of {total_files} files failed to compile:")
+    for snip_file, exc_msg in fail_snip_files:
+        print(f"- {snip_file}\n    {exc_msg}\n")
 else:
-    print(f"All {total} .py files compiled")
+    print(f"All {total_files} .py files compiled")
 
-sys.exit(0 if not fail_snips else 1)
+sys.exit(0 if not fail_snip_files else 1)
