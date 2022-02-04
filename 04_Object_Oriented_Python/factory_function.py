@@ -60,6 +60,6 @@ print(one_ring)
 
 # try to create another One Ring
 another = TheOneRing()
-print(id(one_ring))
-print(id(another))           # same id as for one_ring
-print(another is one_ring)   # prints True, they are the same object
+print('one_ring', id(one_ring))
+print('another ', id(another))                         # same id as for one_ring
+print('They are the same ring', another is one_ring)   # prints True, they are the same object
