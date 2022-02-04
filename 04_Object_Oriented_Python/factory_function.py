@@ -35,17 +35,17 @@ class RingOfPower:
     def rules(self, rings):
         self.bound_rings.extend(rings)
     def __str__(self):
-        return f"{id(self)}: {self.owner}"
+        return f'{id(self)}: {self.owner}'
 
 class TheOneRing(Singleton, RingOfPower):
     def __init__(self):
-        super().__init__("The Dark Lord on His Dark Throne")
+        super().__init__('The Dark Lord on His Dark Throne')
 
 
 # The Rings of Power are created
-elven_rings = [RingOfPower("Elven King Under The Sky") for _ in range(3)]
-dwarven_rings = [RingOfPower("Dwarf Lord in Their Hall of Stone") for _ in range(7)]
-mortal_men_rings = [RingOfPower("Mortal Man Doomed to Die") for _ in range(9)]
+elven_rings = [RingOfPower('Elven King Under The Sky') for _ in range(3)]
+dwarven_rings = [RingOfPower('Dwarf Lord in Their Hall of Stone') for _ in range(7)]
+mortal_men_rings = [RingOfPower('Mortal Man Doomed to Die') for _ in range(9)]
 one_ring = TheOneRing()
 
 # One Ring to rule them all
