@@ -37,7 +37,7 @@ class MetaBunch(type):
             for k in kw:
                 setattr(self, k, kw[k])
         def __repr__(self):
-            """ __repr__ is “clever”: shows only attributes that
+            """ __repr__ is "clever": shows only attributes that
                 differ from default values, for compactness.
             """
             rep = [f'{k}={getattr(self, k)!r}'
