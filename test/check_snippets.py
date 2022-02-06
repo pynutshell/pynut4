@@ -17,7 +17,7 @@ for snip_file in snippet_files:
     log_snip = str(snip_file.relative_to(project_dir))
     total_files += 1
     try:
-        compile(snip_file.read_text(), str(snip_file), "exec")
+        compile(snip_file.read_text(encoding="UTF-8"), str(snip_file), "exec")
     except Exception as exc:
         print(f"Failed to compile {log_snip}")
         print(exc)
