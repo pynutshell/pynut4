@@ -6,10 +6,10 @@ for word in sys.argv[1:]:
                    'WHERE Word=?', [word])
     places = cursor.fetchall()
     if not places:
-         print('Word {!r} not found in index file'.format(word),
+         print(f'Word {word!r} not found in index file',
                file=sys.stderr)
          continue
     for fname, lineno in places:
-        print('Word {!r} occurs in line {} of file {}:'.format(
-               word,lineno,fname))
+        print(f'Word {word!r} occurs in line {lineno} of file {fname!r}:')
         print(linecache.getline(fname, lineno), end='')
+connect.close()
