@@ -7,6 +7,7 @@
 #
 # Run this file using "pytest pytest_example.py"
 #
+import pytest
 
 def test_passing_at_module_level():
     assert 1 == 1
@@ -29,3 +30,8 @@ class TestA:
     def test_error(self):
         assert 1 == 1
         1 / 0
+
+
+# use raises to test when an expected exception is raised
+with pytest.raises(ZeroDivisionError, match="zero"):
+    1/0
