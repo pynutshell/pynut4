@@ -11,7 +11,7 @@ def sin_degrees(x):
 
 # function with bounded FIFO memoizing cache
 cached_values = {}
-maxsize = 20
+maxsize = 32
 def sin_degrees(x):
     if x not in cached_values:
         cached_values[x] = math.sin(math.radians(x))
@@ -22,6 +22,6 @@ def sin_degrees(x):
 
 # function with bounded LRU cache
 import functools
-@functools.lru_cache(maxsize=20)
+@functools.lru_cache(maxsize=32)
 def sin_degrees(x):
     return math.sin(math.radians(x))
