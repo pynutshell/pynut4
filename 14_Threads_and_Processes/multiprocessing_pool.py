@@ -11,9 +11,9 @@ def runner(s):
     print(os.getpid(), s)
     return s, f(s)
 
-def make_dict(set_of_strings):
+def make_dict(strings):
     with mp.Pool() as pool:
-        d = dict(pool.imap_unordered(runner, set_of_strings))
+        d = dict(pool.imap_unordered(runner, strings))
         return d
 
 if __name__ == '__main__':

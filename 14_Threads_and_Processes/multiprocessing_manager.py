@@ -11,11 +11,11 @@ def runner(s, d):
     print(os.getpid(), s)
     d[s] = f(s)
 
-def make_dict(set_of_strings):
+def make_dict(strings):
     mgr = mp.Manager()
     d = mgr.dict()
     workers = []
-    for s in set_of_strings:
+    for s in strings:
         p = mp.Process(target=runner, args=(s, d))
         p.start()
         workers.append(p)
