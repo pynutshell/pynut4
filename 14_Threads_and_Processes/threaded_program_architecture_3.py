@@ -5,7 +5,7 @@ class Worker(threading.Thread):
     request_ID = 0
 
     def __init__(self, requests_queue, results_queue, **kwds):
-        super().__init__(self, **kwds)
+        super().__init__(**kwds)
         self.daemon = True
         self.request_queue = requests_queue
         self.result_queue = results_queue
