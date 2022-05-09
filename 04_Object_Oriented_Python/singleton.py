@@ -1,5 +1,6 @@
 class Singleton:
     _singletons = {}
+
     def __new__(cls, *args, **kwds):
         if cls not in cls._singletons:
             cls._singletons[cls] = super().__new__(cls)
@@ -8,19 +9,34 @@ class Singleton:
 
 # Singleton example - apologies to J.R.R. Tolkien
 
+def short_id(obj, id=id):
+    return hex(id(obj) & 0xffffff).upper()[2:]
+
+# override builtin
+id = short_id
+
+
 class RingOfPower:
     def __init__(self, ring_owner):
         self.owner = ring_owner
         self.bound_rings = []
+
     def bind_in_the_darkness(self):
         return self.bound_rings[:]
+
     def rules(self, rings):
         self.bound_rings.extend(rings)
+
     def __str__(self):
         return f'{id(self)}: {self.owner}'
 
+
 class TheOneRing(Singleton, RingOfPower):
     def __init__(self):
+        # guard against re-init on subsequent reference to singleton
+        if getattr(self, "_TheOneRing__initialized", False):
+            return
+        self.__initialized = True
         super().__init__('The Dark Lord on His Dark Throne')
 
 
@@ -42,6 +58,6 @@ print(one_ring)
 
 # try to create another One Ring
 another = TheOneRing()
-print('one_ring', id(one_ring))
-print('another ', id(another))                         # same id as for one_ring
-print('They are the same ring', another is one_ring)   # prints True, they are the same object
+print('one_ring', id(one_ring), id(one_ring.bound_rings))
+print('another ', id(another), id(another.bound_rings))  # same id as for one_ring, and same instance var
+print('They are the same ring', another is one_ring)     # prints True, they are the same object
