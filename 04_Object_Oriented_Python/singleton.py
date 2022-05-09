@@ -9,13 +9,6 @@ class Singleton:
 
 # Singleton example - apologies to J.R.R. Tolkien
 
-def short_id(obj, id=id):
-    return hex(id(obj) & 0xffffff).upper()[2:]
-
-# override builtin
-id = short_id
-
-
 class RingOfPower:
     def __init__(self, ring_owner):
         self.owner = ring_owner
