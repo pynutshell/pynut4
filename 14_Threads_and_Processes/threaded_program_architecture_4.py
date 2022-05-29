@@ -1,5 +1,6 @@
 import random, time
 import queue
+import operator
 # copy here class Worker as defined above
 from threaded_program_architecture_3 import Worker
 
@@ -11,35 +12,45 @@ workers = [Worker(requests_queue, results_queue)
            for i in range(number_of_workers)]
 work_requests = {}
 
+operations = {
+    '+': operator.add,
+    '-': operator.sub,
+    '*': operator.mul,
+    '/': operator.truediv,
+    '%': operator.mod,
+}
+
 def pick_a_worker():
     return random.choice(workers)
 
 def make_work():
     o1 = random.randrange(2, 10)
     o2 = random.randrange(2, 10)
-    op = random.choice(('+', '-', '*', '/', '%', '**'))
+    op = random.choice(list(operations))
     return f'{o1} {op} {o2}'
 
 def slow_evaluate(expression_string):
     time.sleep(random.randrange(1, 5))
-    return eval(expression_string)
+    op1, oper, op2 = expression_string.split()
+    arith_function = operations[oper]
+    return arith_function(int(op1), int(op2))
 
 def show_results():
     while True:
         try:
-            id, results = results_queue.get_nowait()
+            completed_id, results = results_queue.get_nowait()
         except queue.Empty:
             return
-        print('Result {}: {} -> {}'.format(
-            id, work_requests[id], results))
-        del work_requests[id]
+        work_expression = work_requests.pop(completed_id)
+        print(f'Result {completed_id}: {work_expression} -> {results}')
+
 
 for i in range(10):
     expression_string = make_work()
     worker = pick_a_worker()
-    id = worker.perform_work(slow_evaluate, expression_string)
-    work_requests[id] = expression_string
-    print(f'Submitted request {id}: {expression_string}')
+    request_id = worker.perform_work(slow_evaluate, expression_string)
+    work_requests[request_id] = expression_string
+    print(f'Submitted request {request_id}: {expression_string}')
     time.sleep(1.0)
     show_results()
 
