@@ -1,6 +1,6 @@
 import concurrent.futures as cf
 
-from concurrent_futures import runner
+from concurrent_futures_map import runner
 
 def make_dict(strings):
     with cf.ProcessPoolExecutor() as e:
