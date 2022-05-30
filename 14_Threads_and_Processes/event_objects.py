@@ -5,12 +5,12 @@ import time
 
 
 def runner():
-    print("starting")
+    print('starting')
     time.sleep(random.randint(1, 3))
-    print("waiting")
+    print('waiting')
     if event is not None:
         event.wait()
-    print(f"running at {datetime.datetime.now()}")
+    print(f'running at {datetime.datetime.now()}')
 
 
 num_threads = 10

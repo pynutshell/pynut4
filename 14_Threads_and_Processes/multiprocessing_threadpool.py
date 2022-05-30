@@ -12,5 +12,5 @@ def make_dict(strings):
 
 
 if __name__ == '__main__':
-    dd = make_dict(list("ABCDE"))
+    dd = make_dict(list('ABCDE'))
     print(dd)

@@ -18,8 +18,8 @@ def countdown():
     global times
     times -= 1
     if times < 0:
-        raise Exception("all done!")
-    print("...", times, sep="", end="")
+        raise Exception('all done!')
+    print('...', times, sep='', end='')
 
 
 times = 11
