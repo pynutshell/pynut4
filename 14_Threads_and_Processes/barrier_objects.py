@@ -5,18 +5,22 @@ import time
 
 
 def runner():
-    print("starting")
+    print('starting')
     time.sleep(random.randint(1, 3))
-    print("waiting")
+    print('waiting')
     if barrier is not None:
-        my_number = barrier.wait()
-        print(f"running ({my_number}) at {datetime.datetime.now()}")
+        try:
+            my_number = barrier.wait()
+        except threading.BrokenBarrierError:
+            print('Barrier abort() or reset() called, thread exiting...')
+            return
+        print(f'running ({my_number}) at {datetime.datetime.now()}')
     else:
-        print(f"running at {datetime.datetime.now()}")
+        print(f'running at {datetime.datetime.now()}')
 
 
 def announce_release():
-    print(f"releasing")
+    print('releasing')
 
 
 num_threads = 10
