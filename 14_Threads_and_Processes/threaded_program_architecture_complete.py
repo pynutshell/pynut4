@@ -1,8 +1,6 @@
-import random, time
-import queue
-import operator
+import random, time, queue, operator
 # copy here class Worker as defined above
-from threaded_program_architecture_3 import Worker
+from threaded_program_architecture_worker import Worker
 
 requests_queue = queue.Queue()
 results_queue = queue.Queue()

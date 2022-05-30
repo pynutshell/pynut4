@@ -28,9 +28,8 @@ class Worker(threading.Thread):
 if __name__ == '__main__':
     import queue
 
-    number_of_workers = 10
-
     requests_queue = queue.Queue()
     results_queue = queue.Queue()
+    number_of_workers = 5
     for i in range(number_of_workers):
         worker = Worker(requests_queue, results_queue)
