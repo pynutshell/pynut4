@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Minimal PyScript Example 2</title>
+    <link rel='stylesheet' href='https://pyscript.net/alpha/pyscript.css' />
+    <script defer src='https://pyscript.net/alpha/pyscript.js'></script>
+</head>
+<body>
+
+<py-title>Minimal PyScript Example 2</py-title>
+
+<py-script>
+import sys
+import time
+
+# cannot embed literals '<' and '>' in code, so must define them as variables
+lt, gt = '\x3c\x3e'
+br_tag = f'{lt}br{gt}'
+
+def update_current_time(evt):
+    pyscript.write(
+        'display-current-time',
+        f'The current local time is {time.asctime()}{br_tag}'
+        f'The current time UTC is {time.asctime(time.gmtime())}'
+    )
+
+print('PyScript runs Python in your browser!')
+print(f'Running Python version {sys.version_info}')
+update_current_time(None)
+</py-script>
+
+<!-- empty div placeholder to contain current local and UTC time messages -->
+<div id='display-current-time'></div>
+
+<py-button id='update-time-btn'
+    label='Get current time'
+    pys-onClick='update_current_time'></py-button>
+
+<!-- could not get this to work...
+<py-button id='update-time-btn'
+    label='Get current time'
+    >
+def on_click(evt):
+    update_current_time(evt)
+</py-button>
+-->
+
+</body>
+</html>

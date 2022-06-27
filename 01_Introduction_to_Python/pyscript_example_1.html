@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Minimal PyScript Example</title>
+    <link rel='stylesheet' href='https://pyscript.net/alpha/pyscript.css' />
+    <script defer src='https://pyscript.net/alpha/pyscript.js'></script>
+</head>
+<body>
+
+<py-script>
+import sys
+import time
+
+print('PyScript runs Python in your browser!')
+print(f'Running Python version {sys.version_info}')
+print(f'The current local time is {time.asctime()}')
+print(f'The current time UTC is {time.asctime(time.gmtime())}')
+</py-script>
+
+</body>
+</html>
