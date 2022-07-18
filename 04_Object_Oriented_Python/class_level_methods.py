@@ -1,5 +1,5 @@
 # staticmethod example
-class AClass(object):
+class AClass:
     def astatic():
         print('a static method')
     astatic = staticmethod(astatic)
@@ -8,7 +8,7 @@ AClass.astatic()                    # prints: a static method
 an_instance.astatic()               # prints: a static method
 
 # classmethod example
-class ABase(object):
+class ABase:
     def aclassmet(cls):
         print('a class method for', cls.__name__)
     aclassmet = classmethod(aclassmet)

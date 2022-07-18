@@ -1,6 +1,6 @@
 import math
 
-class Rectangle(object):
+class Rectangle:
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -13,7 +13,7 @@ print(vars(r))
 print(r.area)  # <- property, no ()'s
 
 # property decorator
-class Rectangle(object):
+class Rectangle:
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -27,7 +27,7 @@ print(vars(r))
 print(r.area)
 
 
-class Rectangle(object):
+class Rectangle:
     def __init__(self, width, height):
         self.width = width
         self.height = height

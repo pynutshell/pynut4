@@ -1,4 +1,4 @@
-class SimpleBunch(object):
+class SimpleBunch:
     def __init__(self, **fields):
         self._dict__ = fields
 

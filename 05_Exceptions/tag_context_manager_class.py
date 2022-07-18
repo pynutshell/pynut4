@@ -14,7 +14,7 @@
 #         if _normal_exit:
 #             _manager.__exit__(None, None, None)
 
-class tag(object):
+class tag:
     def __init__(self, tagname):
         self.tagname = tagname
     def __enter__(self):

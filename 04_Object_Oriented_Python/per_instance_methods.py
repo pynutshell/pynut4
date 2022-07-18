@@ -1,7 +1,7 @@
 def fake_get_item(idx):
     return idx
 
-class MyClass(object):
+class MyClass:
     pass
 
 n = MyClass()

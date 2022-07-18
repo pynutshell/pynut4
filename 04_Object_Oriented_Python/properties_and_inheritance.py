@@ -2,7 +2,7 @@
 # method is overridden in derived class (property is
 # defined using the base class method, and not resolved
 # to the derived class method)
-class B(object):
+class B:
     def f(self):
         return 23
     g = property(f)
@@ -15,7 +15,7 @@ print(c.g)                # prints: 23, not 42
 # call subclass method from property by binding property
 # to method that calls self.f(), to resolve to the derived
 # class's method
-class B(object):
+class B:
     def f(self):
         return 23
     def _f_getter(self):

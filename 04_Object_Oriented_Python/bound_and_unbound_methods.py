@@ -3,7 +3,7 @@
 def f(a, b):
     '''a function f with two arguments'''
     print(a, b)
-class C(object):
+class C:
     name = f
 x = C()
 
@@ -18,7 +18,7 @@ def make_adder_as_closure(augend):
     return add
 
 def make_adder_as_bound_method(augend):
-    class Adder(object):
+    class Adder:
         def __init__(self, augend):
             self.augend = augend
         def add(self, addend):
@@ -26,7 +26,7 @@ def make_adder_as_bound_method(augend):
     return Adder(augend).add
 
 def make_adder_as_callable_instance(augend):
-    class Adder(object):
+    class Adder:
         def __init__(self, augend):
             self.augend = augend
         def __call__(self, addend):
