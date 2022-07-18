@@ -1,4 +1,4 @@
-import sys, types
+import sys
 
 class ImporterAndLoader:
      '''importer and loader can be a single class'''
