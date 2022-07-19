@@ -1,0 +1,22 @@
+<breakfast_menu>
+  <food>
+    <name>Belgian Waffles</name>
+    <calories>650</calories>
+  </food>
+  <food>
+    <name>Strawberry Belgian Waffles</name>
+    <calories>900</calories>
+  </food>
+  <food>
+    <name>Berry-Berry Belgian Waffles</name>
+    <calories>900</calories>
+  </food>
+  <food>
+    <name>French Toast</name>
+    <calories>600</calories>
+  </food>
+  <food>
+    <name>Homestyle Breakfast</name>
+    <calories>950</calories>
+  </food>
+</breakfast_menu>
