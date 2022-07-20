@@ -13,7 +13,7 @@ True
 >>> # near-0 comparison with default tolerances
 >>> math.isclose(0, f)
 False
->>> # use abs_tol for near-0 comparison
+>>> # must use abs_tol for comparison with 0
 >>> math.isclose(0, f, abs_tol=1e-15)
 True
 """
