@@ -1,17 +1,18 @@
 """
 >>> import unicodedata
->>> unicodedata.name("🌈")
-'RAINBOW'
->>> unicodedata.name("Ⅵ")
+>>> unicodedata.name('⚀')
+'DIE FACE-1'
+>>> unicodedata.name('Ⅵ')
 'ROMAN NUMERAL SIX'
->>> int("Ⅵ")
+>>> int('Ⅵ')
 Traceback (most recent call last):
   ...
 ValueError: invalid literal for int() with base 10: 'Ⅵ'
->>> unicodedata.numeric("Ⅵ")  # use unicodedata to get the numeric value
+>>> unicodedata.numeric('Ⅵ')  # use unicodedata to get the numeric value
 6.0
->>> unicodedata.lookup("MUSICAL SCORE")
-'🎼'
+>>> unicodedata.lookup('RECYCLING SYMBOL FOR TYPE-1 PLASTICS')
+'♳'
+
 """
 
 if __name__ == '__main__':
