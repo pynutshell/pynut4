@@ -31,5 +31,4 @@ TypeError: Color() accepts 3 positional sub-patterns (4 given)
 if __name__ == '__main__':
     # use doctest to simulate console sessions
     import doctest
-    import sys
-    doctest.testsource(sys.modules["__main__"], "__main__")
+    doctest.testmod()
