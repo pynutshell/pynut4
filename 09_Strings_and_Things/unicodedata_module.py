@@ -18,4 +18,4 @@ ValueError: invalid literal for int() with base 10: 'Ⅵ'
 if __name__ == '__main__':
     # use doctest to simulate console sessions
     import doctest
-    doctest.testmod()
+    doctest.testmod(verbose=True, exclude_empty=True)

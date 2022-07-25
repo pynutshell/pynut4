@@ -1,3 +1,5 @@
+__test__ = {
+"reverse_words (using_doctest.py)":
 """
 This module supplies a single function reverse_words that reverses
 a string by words.
@@ -32,6 +34,7 @@ As a side effect, reverse_words eliminates any redundant spacing:
 'spacing redundant with'
 
 """
+}
 
 def reverse_words(astring):
     words = astring.split()
@@ -42,4 +45,4 @@ def reverse_words(astring):
 if __name__ == '__main__':
     import doctest
 
-    doctest.testmod()
+    doctest.testmod(verbose=True, exclude_empty=True)

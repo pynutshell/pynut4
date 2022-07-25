@@ -35,4 +35,4 @@ while True:
 if __name__ == '__main__':
     # use doctest to simulate console sessions
     import doctest
-    doctest.testmod()
+    doctest.testmod(verbose=True, exclude_empty=True)
