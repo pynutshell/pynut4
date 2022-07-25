@@ -7,4 +7,5 @@ print(
     inspect.formatargvalues(
         *inspect.getargvalues(f())
     )
-)  # prints: (x=23)
+)
+# prints: (x=23)
