@@ -1,4 +1,4 @@
-# The 'tag' class as context manager is equivalent to this code:
+# The 'enclosing_tag' class as context manager is equivalent to this code:
 #
 #     _normal_exit = True
 #     _manager = expression
@@ -7,14 +7,14 @@
 #         statement(s)
 #     except:
 #         _normal_exit = False
-#         if not _manager.__exit_(*sys.exc_info()):
+#         if not _manager.__exit__(*sys.exc_info()):
 #             raise
 #         # note that exception does not propagate if __exit__ returns a true value
 #     finally:
 #         if _normal_exit:
 #             _manager.__exit__(None, None, None)
 
-class tag:
+class enclosing_tag:
     def __init__(self, tagname):
         self.tagname = tagname
     def __enter__(self):
@@ -22,6 +22,5 @@ class tag:
     def __exit__(self, etyp, einst, etb):
         print(f'</{self.tagname}>')
 
-tt = tag('sometag')
-with tt:
+with enclosing_tag('sometag'):
     print('some output')
