@@ -7,3 +7,11 @@ logging.basicConfig(
 
 logging.getLogger().setLevel(logging.DEBUG)
 logging.getLogger().setLevel(logging.ERROR)
+
+
+def cpu_intensive_function():
+    return 2**100
+
+if logging.getLogger().isEnabledFor(logging.DEBUG):
+    foo = cpu_intensive_function()
+    logging.debug('foo is %r', foo)
