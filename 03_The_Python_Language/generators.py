@@ -8,9 +8,10 @@ for i in updown(3):
 
 
 def frange(start, stop, stride=1.0):
+    start = float(start)
     while start < stop:
         yield start
         start += stride
 
-for f in frange(1.0, 2.0, stride=0.1):
-    print(f'{f:.1f}')
+for f in frange(1, 2, stride=0.125):
+    print(f'{f:.3f}')
