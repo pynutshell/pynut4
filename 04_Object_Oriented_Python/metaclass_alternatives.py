@@ -16,3 +16,14 @@ class Attrib:
 
 class AClass:
     some_name = Attrib()
+
+
+
+class MyMeta(type):
+    def __str__(cls):
+        return f"Beautiful class {cls.__name__!r}"
+
+class MyClass(metaclass=MyMeta): pass
+
+x = MyClass()
+print(type(x))
