@@ -3,7 +3,8 @@ class Singleton:
 
     def __new__(cls, *args, **kwds):
         if cls not in cls._singletons:
-            cls._singletons[cls] = super().__new__(cls)
+            cls._singletons[cls] = obj = super().__new__(cls)
+            obj._initialized = False
         return cls._singletons[cls]
 
 
@@ -27,9 +28,9 @@ class RingOfPower:
 class TheOneRing(Singleton, RingOfPower):
     def __init__(self):
         # guard against re-init on subsequent reference to singleton
-        if getattr(self, "_TheOneRing__initialized", False):
+        if self._initialized:
             return
-        self.__initialized = True
+        self._initialized = True
         super().__init__('The Dark Lord on His Dark Throne')
 
 
