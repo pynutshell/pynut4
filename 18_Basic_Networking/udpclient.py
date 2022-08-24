@@ -3,20 +3,22 @@ import socket
  
 UDP_IP = 'localhost'
 UDP_PORT = 8883
-MESSAGE = u"""\
+MESSAGE = """\
 This is a bunch of lines, each
 of which will be sent in a single
 UDP datagram. No error detection
 or correction will occur.
 Crazy bananas! £€ should go through."""
- 
-sock = socket.socket(socket.AF_INET,  # Internet
-                     socket.SOCK_DGRAM)  # UDP
+
 server = UDP_IP, UDP_PORT
-for line in MESSAGE.splitlines():
-    data = line.encode('utf-8')
-    sock.sendto(data, server)
-    print('SENT', repr(data), 'to', server)
-    response, address = sock.recvfrom(1024)  # buffer size: 1024
-    print('RCVD', repr(response.decode('utf-8')), 'from', address)
-sock.close()
+with socket.socket(socket.AF_INET,     # IPv4
+                   socket.SOCK_DGRAM,  # UDP
+                   ) as sock:
+    for line in MESSAGE.splitlines():
+        data = line.encode('utf-8')
+        bytes_sent = sock.sendto(data, server)
+        print(f'SENT {data!r} ({bytes_sent}/{len(data)}) to {server}')
+        response, address = sock.recvfrom(1024)  # buffer size: 1024
+        print(f'RCVD {response.decode("utf-8")!r} ({len(response)}) from {address}')
+
+print('Disconnected from server')
