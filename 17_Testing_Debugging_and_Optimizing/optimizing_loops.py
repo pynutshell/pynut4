@@ -1,22 +1,26 @@
 def slower(anobject, ahugenumber):
-    for i in range(ahugenumber): anobject.amethod(i)
+    for i in range(ahugenumber):
+        anobject.amethod(i)
 
 # hoisting attribute lookup of method 'amethod' out of the loop
 def faster(anobject, ahugenumber):
     themethod = anobject.amethod
-    for i in range(ahugenumber): themethod(i)
+    for i in range(ahugenumber):
+        themethod(i)
 
 def slightly_slower(asequence, adict):
-    for x in asequence: adict[x] = hex(x)
+    for x in asequence:
+        adict[x] = hex(x)
 
 # copying a global builtin to a local name
 def slightly_faster(asequence, adict):
     myhex = hex
-    for x in asequence: adict[x] = myhex(x)
+    for x in asequence:
+        adict[x] = myhex(x)
 
 
 # list comprehension compared to append and list(map(...))
-import time, operator
+import timeit, operator
 
 
 def slow(asequence):
@@ -34,17 +38,12 @@ def fast(asequence):
     return [-x for x in asequence]
 
 
-biggie = range(500 * 1000)
-n_times = [None] * 50
-
-
-def timit(afunc):
-    lobi = biggie
-    start = time.perf_counter()
-    for x in n_times: afunc(lobi)
-    stend = time.perf_counter()
-    return '{:<10}: {:.4f}'.format(afunc.__name__, stend - start)
-
-
-for afunc in slow, middling, fast, fast, middling, slow:
-    print(timit(afunc))
+for afunc in slow, middling, fast:
+    timing = timeit.repeat('afunc(big_seq)',
+                           setup='big_seq=range(500*1000)',
+                           globals={'afunc': afunc},
+                           repeat=5,
+                           number=100)
+    # print(f'{afunc.__name__:<10}: {timing}')
+    for t in timing:
+        print(f'{afunc.__name__},{t}')
