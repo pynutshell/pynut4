@@ -1,15 +1,15 @@
 import threading
 
 class Periodic(threading.Timer):
-    def __init__(self, interval, callable_fn, args=(), kwargs={}):
+    def __init__(self, interval, callback, args=None, kwargs=None):
         super().__init__(interval, self._f, args, kwargs)
-        self.callable = callable_fn
+        self.callback = callback
 
     def _f(self, *args, **kwargs):
-        p = type(self)(self.interval, self.callable, args, kwargs)
+        p = type(self)(self.interval, self.callback, args, kwargs)
         p.start()
         try:
-            self.callable(*args, **kwargs)
+            self.callback(*args, **kwargs)
         except Exception:
             p.cancel()
 
