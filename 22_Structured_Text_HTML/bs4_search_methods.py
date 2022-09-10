@@ -1,6 +1,16 @@
 import bs4
 import re
 
+"""
+For any Tag instance t and any group of positional and named arguments 
+represented by ... the following equivalence always holds:
+
+just_one = t.find(...)
+other_way_list = t.find_all(..., limit=1)
+other_way = other_way_list[0] if other_way_list else None
+assert just_one == other_way
+"""
+
 soup = bs4.BeautifulSoup('''\
   <b foo="x"> a B tag 
     <abahh> with inner abahh </abahh>
@@ -12,7 +22,7 @@ soup = bs4.BeautifulSoup('''\
   ''')
 
 def child_of_foo(tag):
-    return tag.parent == 'foo'
+    return tag.parent.name == 'foo'
 
 # search method arguments: name
 
@@ -28,7 +38,7 @@ soup.find_all(re.compile(r'^b'))
 soup.find_all(re.compile(r'bah'))
 # returns all instances of Tags including string 'bah' in the document
 
-soup.find_all(name=child_of_foo)
+soup.find_all(child_of_foo)
 # returns all instances of Tags whose parent's name is 'foo'
 
 
