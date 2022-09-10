@@ -49,12 +49,13 @@ soup.find_all('b', {'foo': True, 'bar': None})
 
 ###
 # code to execute the above search statements and print the results of each
-for line in open(__file__):
-    line = line.rstrip()
-    if line == "###":
-        break
+with open(__file__) as source:
+    for line in source:
+        line = line.rstrip()
+        if line == "###":
+            break
 
-    print(line)
-    if line.startswith("soup."):
-        statement = line.partition("#")[0]
-        exec(f"print({statement})", globals())
+        print(line)
+        if line.startswith("soup."):
+            statement = line.partition("#")[0]
+            exec(f"print({statement})", globals())
