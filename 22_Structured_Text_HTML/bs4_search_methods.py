@@ -26,35 +26,35 @@ def child_of_foo(tag):
 
 # search method arguments: name
 
+# return all instances of Tag 'b' in the document
 soup.find_all('b') # or soup.find_all(name='b')
-# returns all instances of Tag 'b' in the document
 
+# return all instances of Tags 'b' and 'bah' in the document
 soup.find_all(['b', 'bah'])
-# returns all instances of Tags 'b' and 'bah' in the document
 
+# return all instances of Tags starting with 'b' in the document
 soup.find_all(re.compile(r'^b'))
-# returns all instances of Tags starting with 'b' in the document
 
+# return all instances of Tags including string 'bah' in the document
 soup.find_all(re.compile(r'bah'))
-# returns all instances of Tags including string 'bah' in the document
 
+# return all instances of Tags whose parent's name is 'foo'
 soup.find_all(child_of_foo)
-# returns all instances of Tags whose parent's name is 'foo'
 
 
 # search method arguments: string
 
+# return all instances of NavigableString whose text is 'foo'
 soup.find_all(string='foo')
-# returns all instances of NavigableString whose text is 'foo'
 
+# return all instances of Tag 'b' whose .string's text is 'foo'
 soup.find_all('b', string='foo')
-# returns all instances of Tag 'b' whose .string's text is 'foo'
 
 
 # search method arguments: attrs
 
+# return all instances of Tag 'b' w/an attribute 'foo' and no 'bar'
 soup.find_all('b', {'foo': True, 'bar': None})
-# returns all instances of Tag 'b' w/an attribute 'foo' and no 'bar'
 
 
 ###

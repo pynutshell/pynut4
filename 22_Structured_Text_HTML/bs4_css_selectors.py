@@ -5,11 +5,11 @@ def foo_child_of_bar(t):
 
 soup = bs4.BeautifulSoup('<bar>Plain <foo>bold</foo></bar>')
 
+# return tags with name 'foo' children of tags with name 'bar'
 soup.find_all(foo_child_of_bar)
-# returns tags with name 'foo' children of tags with name 'bar'
 
-soup.select('bar > foo')
 # exactly equivalent, with no custom filter function needed
+soup.select('bar > foo')
 
 
 ###
