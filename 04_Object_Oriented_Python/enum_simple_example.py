@@ -14,6 +14,16 @@ class Size(Enum):
     L = auto()
 
 
+class Nothing(Enum):
+    ZIP = 0
+    ZILCH = 0
+    NADA = 0
+
+
+print(list(Nothing))
+print(Nothing.ZIP is Nothing.ZILCH)
+print(Nothing.ZIP == Nothing.ZILCH)
+
 # these improper comparisons and expressions raise
 # TypeError exceptions
 print(Color.RED > Size.XS)
