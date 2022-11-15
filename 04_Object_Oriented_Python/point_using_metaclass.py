@@ -1,4 +1,3 @@
-import collections
 import warnings
 class MetaBunch(type):
     """
