@@ -5,16 +5,16 @@
 ...         self.name = name
 ...         self.red, self.green, self.blue = r, g, b
 ...
->>> red = Color(255, 0, 0, 'red')
->>> blue = Color(0, 0, 255)
->>> for subject in (42.0, red, blue):
+>>> red_color = Color(255, 0, 0, 'red')
+>>> blue_color = Color(0, 0, 255)
+>>> for subject in (42.0, red_color, blue_color):
 ...     match subject:
 ...         case float(x):
 ...             print('float', x)
 ...         case Color(red, green, blue, name='red'):
 ...             print(type(subject).__name__, subject.name, red, green, blue)
-...         case Color(red, green, blue=255) as color:
-...             print(type(color).__name__, red, green, blue, color.name,)
+...         case Color(a, b, 255) as bluish:
+...             print(type(bluish).__name__, a, b, bluish.blue, bluish.name)
 ...         case _: print(type(subject), subject)
 ...
 float 42.0
