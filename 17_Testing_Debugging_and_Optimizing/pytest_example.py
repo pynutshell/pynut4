@@ -16,7 +16,6 @@ def test_failing_at_module_level():
     assert 1 == 0
 
 def test_error_at_module_level():
-    assert 1 == 1
     1/0
 
 
@@ -28,7 +27,6 @@ class TestA:
         assert 1 == 0
 
     def test_error(self):
-        assert 1 == 1
         1 / 0
 
 
