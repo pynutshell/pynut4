@@ -14,3 +14,8 @@
 >>> print(s5, s5.is_xml)
 <html><head></head><body><p>hello</p></body></html> False
 """
+
+if __name__ == '__main__':
+    # use doctest to simulate console sessions
+    import doctest
+    doctest.testmod(verbose=True, exclude_empty=True)

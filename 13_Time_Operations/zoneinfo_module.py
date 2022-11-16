@@ -35,3 +35,8 @@ datetime.timezone(datetime.timedelta(days=-1, seconds=68400), 'Central Daylight 
 'Africa/Abidjan'
 
 """
+
+if __name__ == '__main__':
+    # use doctest to simulate console sessions
+    import doctest
+    doctest.testmod(verbose=True, exclude_empty=True)

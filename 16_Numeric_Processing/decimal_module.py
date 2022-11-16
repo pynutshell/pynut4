@@ -35,3 +35,8 @@ Decimal('2.200000000000000088817841970')
 >>> d + Decimal(str(a)) # convert a to decimal with str(a)
 Decimal('2.2')
 """
+
+if __name__ == '__main__':
+    # use doctest to simulate console sessions
+    import doctest
+    doctest.testmod(verbose=True, exclude_empty=True)

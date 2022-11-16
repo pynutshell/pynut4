@@ -10,3 +10,8 @@ False
 >>> f.is_file()
 True
 """
+
+if __name__ == '__main__':
+    # use doctest to simulate console sessions
+    import doctest
+    doctest.testmod(verbose=True, exclude_empty=True)

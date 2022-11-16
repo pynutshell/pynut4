@@ -29,3 +29,8 @@
 >>> print(count)
 5
 """
+
+if __name__ == '__main__':
+    # use doctest to simulate console sessions
+    import doctest
+    doctest.testmod(verbose=True, exclude_empty=True)

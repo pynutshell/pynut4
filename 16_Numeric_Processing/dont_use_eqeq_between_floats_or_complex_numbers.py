@@ -17,3 +17,9 @@ False
 >>> math.isclose(0, f, abs_tol=1e-15)
 True
 """
+
+if __name__ == '__main__':
+    # use doctest to simulate console sessions
+    import doctest
+    doctest.testmod(verbose=True, exclude_empty=True)
+
