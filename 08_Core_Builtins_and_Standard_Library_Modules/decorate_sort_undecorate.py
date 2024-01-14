@@ -1,7 +1,7 @@
 import heapq
 
 
-class KeyHeap(object):
+class KeyHeap:
     def __init__(self, alist, key):
         self.heap = [(key(o), i, o) for i, o in enumerate(alist)]
         heapq.heapify(self.heap)
