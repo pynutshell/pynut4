@@ -2,12 +2,12 @@ import re
 
 # := in an if/elif statement
 
-re_match = re.match(r'Name: (\S)', input_string)
+re_match = re.match(r'Name: (\S+)', input_string)
 if re_match:
     print(re_match.groups(1))
 
 # collapsed version using :=
-if (re_match := re.match(r'Name: (\S)', input_string)):
+if (re_match := re.match(r'Name: (\S+)', input_string)):
     print(re_match.groups(1))
 
 
